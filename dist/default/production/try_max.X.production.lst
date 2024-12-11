@@ -1,0 +1,1022 @@
+
+
+Microchip MPLAB XC8 Assembler V2.46 build 20240104201356 
+                                                                                               Thu Dec 12 01:35:26 2024
+
+Microchip MPLAB XC8 C Compiler v2.46 (Free license) build 20240104201356 Og1 
+     1                           	processor	16F877A
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	idataBANK0,global,class=CODE,delta=2,noexec
+     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     6                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	inittext,global,class=CODE,delta=2
+     8                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     9                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1,noexec
+    10                           	psect	maintext,global,class=CODE,split=1,delta=2
+    11                           	psect	text1,local,class=CODE,merge=1,delta=2
+    12                           	psect	text2,local,class=CODE,merge=1,delta=2
+    13                           	psect	text3,local,class=CODE,merge=1,delta=2
+    14                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    15                           	dabs	1,0x7E,2
+    16     0000                     
+    17                           ; Generated 12/10/2023 GMT
+    18                           ; 
+    19                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    20                           ; All rights reserved.
+    21                           ; 
+    22                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    23                           ; 
+    24                           ; Redistribution and use in source and binary forms, with or without modification, are
+    25                           ; permitted provided that the following conditions are met:
+    26                           ; 
+    27                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    28                           ;        conditions and the following disclaimer.
+    29                           ; 
+    30                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    31                           ;        of conditions and the following disclaimer in the documentation and/or other
+    32                           ;        materials provided with the distribution. Publication is not required when
+    33                           ;        this file is used in an embedded application.
+    34                           ; 
+    35                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    36                           ;        software without specific prior written permission.
+    37                           ; 
+    38                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    39                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    40                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    41                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    42                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    43                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    44                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    45                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    46                           ; 
+    47                           ; 
+    48                           ; Code-generator required, PIC16F877A Definitions
+    49                           ; 
+    50                           ; SFR Addresses
+    51     0000                     	;# 
+    52     0001                     	;# 
+    53     0002                     	;# 
+    54     0003                     	;# 
+    55     0004                     	;# 
+    56     0005                     	;# 
+    57     0006                     	;# 
+    58     0007                     	;# 
+    59     0008                     	;# 
+    60     0009                     	;# 
+    61     000A                     	;# 
+    62     000B                     	;# 
+    63     000C                     	;# 
+    64     000D                     	;# 
+    65     000E                     	;# 
+    66     000E                     	;# 
+    67     000F                     	;# 
+    68     0010                     	;# 
+    69     0011                     	;# 
+    70     0012                     	;# 
+    71     0013                     	;# 
+    72     0014                     	;# 
+    73     0015                     	;# 
+    74     0015                     	;# 
+    75     0016                     	;# 
+    76     0017                     	;# 
+    77     0018                     	;# 
+    78     0019                     	;# 
+    79     001A                     	;# 
+    80     001B                     	;# 
+    81     001B                     	;# 
+    82     001C                     	;# 
+    83     001D                     	;# 
+    84     001E                     	;# 
+    85     001F                     	;# 
+    86     0081                     	;# 
+    87     0085                     	;# 
+    88     0086                     	;# 
+    89     0087                     	;# 
+    90     0088                     	;# 
+    91     0089                     	;# 
+    92     008C                     	;# 
+    93     008D                     	;# 
+    94     008E                     	;# 
+    95     0091                     	;# 
+    96     0092                     	;# 
+    97     0093                     	;# 
+    98     0094                     	;# 
+    99     0098                     	;# 
+   100     0099                     	;# 
+   101     009C                     	;# 
+   102     009D                     	;# 
+   103     009E                     	;# 
+   104     009F                     	;# 
+   105     010C                     	;# 
+   106     010D                     	;# 
+   107     010E                     	;# 
+   108     010F                     	;# 
+   109     018C                     	;# 
+   110     018D                     	;# 
+   111     0000                     	;# 
+   112     0001                     	;# 
+   113     0002                     	;# 
+   114     0003                     	;# 
+   115     0004                     	;# 
+   116     0005                     	;# 
+   117     0006                     	;# 
+   118     0007                     	;# 
+   119     0008                     	;# 
+   120     0009                     	;# 
+   121     000A                     	;# 
+   122     000B                     	;# 
+   123     000C                     	;# 
+   124     000D                     	;# 
+   125     000E                     	;# 
+   126     000E                     	;# 
+   127     000F                     	;# 
+   128     0010                     	;# 
+   129     0011                     	;# 
+   130     0012                     	;# 
+   131     0013                     	;# 
+   132     0014                     	;# 
+   133     0015                     	;# 
+   134     0015                     	;# 
+   135     0016                     	;# 
+   136     0017                     	;# 
+   137     0018                     	;# 
+   138     0019                     	;# 
+   139     001A                     	;# 
+   140     001B                     	;# 
+   141     001B                     	;# 
+   142     001C                     	;# 
+   143     001D                     	;# 
+   144     001E                     	;# 
+   145     001F                     	;# 
+   146     0081                     	;# 
+   147     0085                     	;# 
+   148     0086                     	;# 
+   149     0087                     	;# 
+   150     0088                     	;# 
+   151     0089                     	;# 
+   152     008C                     	;# 
+   153     008D                     	;# 
+   154     008E                     	;# 
+   155     0091                     	;# 
+   156     0092                     	;# 
+   157     0093                     	;# 
+   158     0094                     	;# 
+   159     0098                     	;# 
+   160     0099                     	;# 
+   161     009C                     	;# 
+   162     009D                     	;# 
+   163     009E                     	;# 
+   164     009F                     	;# 
+   165     010C                     	;# 
+   166     010D                     	;# 
+   167     010E                     	;# 
+   168     010F                     	;# 
+   169     018C                     	;# 
+   170     018D                     	;# 
+   171                           
+   172                           	psect	idataBANK0
+   173     06C9                     __pidataBANK0:
+   174                           
+   175                           ;initializer for main@F1023
+   176     06C9  3442               	retlw	66
+   177     06CA  3433               	retlw	51
+   178     06CB  3432               	retlw	50
+   179     06CC  3431               	retlw	49
+   180                           
+   181                           ;initializer for main@F1021
+   182     06CD  3441               	retlw	65
+   183     06CE  3432               	retlw	50
+   184     06CF  3433               	retlw	51
+   185     06D0  3434               	retlw	52
+   186     0006                     _PORTBbits	set	6
+   187     0006                     _PORTB	set	6
+   188     0086                     _TRISB	set	134
+   189                           
+   190                           	psect	cinit
+   191     07EE                     start_initialization:	
+   192                           ; #config settings
+   193                           
+   194     07EE                     __initialization:
+   195                           
+   196                           ; Initialize objects allocated to BANK0
+   197     07EE  1383               	bcf	3,7	;select IRP bank0
+   198     07EF  3034               	movlw	low (__pdataBANK0+8)
+   199     07F0  00FD               	movwf	btemp+-1
+   200     07F1  3006               	movlw	high __pidataBANK0
+   201     07F2  00FE               	movwf	btemp
+   202     07F3  30C9               	movlw	low __pidataBANK0
+   203     07F4  00FF               	movwf	btemp+1
+   204     07F5  302C               	movlw	low __pdataBANK0
+   205     07F6  0084               	movwf	4
+   206     07F7  120A  118A  26D5  120A  118A  	fcall	init_ram0
+   207     07FC                     end_of_initialization:	
+   208                           ;End of C runtime variable initialization code
+   209                           
+   210     07FC                     __end_of__initialization:
+   211     07FC  0183               	clrf	3
+   212     07FD  120A  118A  2F6D   	ljmp	_main	;jump to C main() function
+   213                           
+   214                           	psect	dataBANK0
+   215     002C                     __pdataBANK0:
+   216     002C                     main@F1023:
+   217     002C                     	ds	4
+   218     0030                     main@F1021:
+   219     0030                     	ds	4
+   220                           
+   221                           	psect	inittext
+   222     06D1                     init_fetch0:	
+   223                           ;	Called with low address in FSR and high address in W
+   224                           
+   225     06D1  087E               	movf	btemp,w
+   226     06D2  008A               	movwf	10
+   227     06D3  087F               	movf	btemp+1,w
+   228     06D4  0082               	movwf	2
+   229     06D5                     init_ram0:	
+   230                           ;Called with:
+   231                           ;	high address of idata address in btemp 
+   232                           ;	low address of idata address in btemp+1 
+   233                           ;	low address of data in FSR
+   234                           ;	high address + 1 of data in btemp-1
+   235                           
+   236     06D5  120A  118A  26D1  120A  118A  	fcall	init_fetch0
+   237     06DA  0080               	movwf	0
+   238     06DB  0A84               	incf	4,f
+   239     06DC  0804               	movf	4,w
+   240     06DD  067D               	xorwf	btemp+-1,w
+   241     06DE  1903               	btfsc	3,2
+   242     06DF  3400               	retlw	0
+   243     06E0  0AFF               	incf	btemp+1,f
+   244     06E1  1903               	btfsc	3,2
+   245     06E2  0AFE               	incf	btemp,f
+   246     06E3  2ED5               	goto	init_ram0
+   247                           
+   248                           	psect	cstackCOMMON
+   249     0070                     __pcstackCOMMON:
+   250     0070                     ?_initialize_ports:
+   251     0070                     ??_initialize_ports:	
+   252                           ; 1 bytes @ 0x0
+   253                           
+   254     0070                     ?_send_command:	
+   255                           ; 1 bytes @ 0x0
+   256                           
+   257     0070                     ?_init_max6952:	
+   258                           ; 1 bytes @ 0x0
+   259                           
+   260     0070                     ?_main:	
+   261                           ; 1 bytes @ 0x0
+   262                           
+   263     0070                     send_command@data:	
+   264                           ; 1 bytes @ 0x0
+   265                           
+   266                           
+   267                           ; 1 bytes @ 0x0
+   268     0070                     	ds	1
+   269     0071                     ??_send_command:
+   270                           
+   271                           ; 1 bytes @ 0x1
+   272     0071                     	ds	2
+   273     0073                     send_command@address:
+   274                           
+   275                           ; 1 bytes @ 0x3
+   276     0073                     	ds	1
+   277     0074                     send_command@i:
+   278                           
+   279                           ; 2 bytes @ 0x4
+   280     0074                     	ds	2
+   281     0076                     send_command@i_64:
+   282                           
+   283                           ; 2 bytes @ 0x6
+   284     0076                     	ds	2
+   285     0078                     ??_init_max6952:
+   286     0078                     ??_main:	
+   287                           ; 1 bytes @ 0x8
+   288                           
+   289                           
+   290                           ; 1 bytes @ 0x8
+   291     0078                     	ds	3
+   292                           
+   293                           	psect	cstackBANK0
+   294     0020                     __pcstackBANK0:
+   295     0020                     main@display_data1:
+   296                           
+   297                           ; 4 bytes @ 0x0
+   298     0020                     	ds	4
+   299     0024                     main@display_data2:
+   300                           
+   301                           ; 4 bytes @ 0x4
+   302     0024                     	ds	4
+   303     0028                     main@i:
+   304                           
+   305                           ; 2 bytes @ 0x8
+   306     0028                     	ds	2
+   307     002A                     main@j:
+   308                           
+   309                           ; 2 bytes @ 0xA
+   310     002A                     	ds	2
+   311                           
+   312                           	psect	maintext
+   313     076D                     __pmaintext:	
+   314 ;;
+   315 ;;Main: autosize = 0, tempsize = 3, incstack = 0, save=0
+   316 ;;
+   317 ;; *************** function _main *****************
+   318 ;; Defined at:
+   319 ;;		line 64 in file "maxtry.c"
+   320 ;; Parameters:    Size  Location     Type
+   321 ;;		None
+   322 ;; Auto vars:     Size  Location     Type
+   323 ;;  j               2   10[BANK0 ] int 
+   324 ;;  i               2    8[BANK0 ] int 
+   325 ;;  display_data    4    4[BANK0 ] unsigned char [4]
+   326 ;;  display_data    4    0[BANK0 ] unsigned char [4]
+   327 ;; Return value:  Size  Location     Type
+   328 ;;                  1    wreg      void 
+   329 ;; Registers used:
+   330 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   331 ;; Tracked objects:
+   332 ;;		On entry : B00/0
+   333 ;;		On exit  : 0/0
+   334 ;;		Unchanged: 0/0
+   335 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   336 ;;      Params:         0       0       0       0       0
+   337 ;;      Locals:         0      12       0       0       0
+   338 ;;      Temps:          3       0       0       0       0
+   339 ;;      Totals:         3      12       0       0       0
+   340 ;;Total ram usage:       15 bytes
+   341 ;; Hardware stack levels required when called: 2
+   342 ;; This function calls:
+   343 ;;		_init_max6952
+   344 ;;		_initialize_ports
+   345 ;;		_send_command
+   346 ;; This function is called by:
+   347 ;;		Startup code after reset
+   348 ;; This function uses a non-reentrant model
+   349 ;;
+   350                           
+   351     076D                     _main:	
+   352                           ;psect for function _main
+   353                           
+   354     076D                     l721:	
+   355                           ;incstack = 0
+   356                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   357                           
+   358                           
+   359                           ;maxtry.c: 65:     initialize_ports();
+   360     076D  120A  118A  26C2  120A  118A  	fcall	_initialize_ports
+   361     0772                     l723:
+   362                           
+   363                           ;maxtry.c: 66:     init_max6952();
+   364     0772  120A  118A  26E4  120A  118A  	fcall	_init_max6952
+   365     0777                     l725:
+   366                           
+   367                           ;maxtry.c: 68:     uint8_t display_data1[] = {0x41, 0x32, 0x33, 0x34};
+   368     0777  1283               	bcf	3,5	;RP0=0, select bank0
+   369     0778  1303               	bcf	3,6	;RP1=0, select bank0
+   370     0779  0833               	movf	main@F1021+3,w
+   371     077A  00A3               	movwf	main@display_data1+3
+   372     077B  0832               	movf	main@F1021+2,w
+   373     077C  00A2               	movwf	main@display_data1+2
+   374     077D  0831               	movf	main@F1021+1,w
+   375     077E  00A1               	movwf	main@display_data1+1
+   376     077F  0830               	movf	main@F1021,w
+   377     0780  00A0               	movwf	main@display_data1
+   378     0781                     l727:
+   379                           
+   380                           ;maxtry.c: 69:     uint8_t display_data2[] = {0x42, 0x33, 0x32, 0x31};
+   381     0781  082F               	movf	main@F1023+3,w
+   382     0782  00A7               	movwf	main@display_data2+3
+   383     0783  082E               	movf	main@F1023+2,w
+   384     0784  00A6               	movwf	main@display_data2+2
+   385     0785  082D               	movf	main@F1023+1,w
+   386     0786  00A5               	movwf	main@display_data2+1
+   387     0787  082C               	movf	main@F1023,w
+   388     0788  00A4               	movwf	main@display_data2
+   389     0789                     l729:
+   390                           
+   391                           ;maxtry.c: 71:         for (int i = 0; i < sizeof(display_data1) / sizeof(display_data1[
+      +                          0]); i++) {
+   392     0789  01A8               	clrf	main@i
+   393     078A  01A9               	clrf	main@i+1
+   394     078B                     l735:
+   395                           
+   396                           ;maxtry.c: 72:             send_command(0x20 + i, display_data1[i]);
+   397     078B  0828               	movf	main@i,w
+   398     078C  3E20               	addlw	(low (main@display_data1| 0))& (0+255)
+   399     078D  0084               	movwf	4
+   400     078E  1383               	bcf	3,7	;select IRP bank0
+   401     078F  0800               	movf	0,w
+   402     0790  00F0               	movwf	send_command@data
+   403     0791  0828               	movf	main@i,w
+   404     0792  3E20               	addlw	32
+   405     0793  120A  118A  2705  120A  118A  	fcall	_send_command
+   406     0798                     l737:
+   407                           
+   408                           ;maxtry.c: 73:         }
+   409     0798  3001               	movlw	1
+   410     0799  1283               	bcf	3,5	;RP0=0, select bank0
+   411     079A  1303               	bcf	3,6	;RP1=0, select bank0
+   412     079B  07A8               	addwf	main@i,f
+   413     079C  1803               	skipnc
+   414     079D  0AA9               	incf	main@i+1,f
+   415     079E  3000               	movlw	0
+   416     079F  07A9               	addwf	main@i+1,f
+   417     07A0                     l739:
+   418     07A0  3000               	movlw	0
+   419     07A1  0229               	subwf	main@i+1,w
+   420     07A2  3004               	movlw	4
+   421     07A3  1903               	skipnz
+   422     07A4  0228               	subwf	main@i,w
+   423     07A5  1C03               	skipc
+   424     07A6  2FA8               	goto	u111
+   425     07A7  2FA9               	goto	u110
+   426     07A8                     u111:
+   427     07A8  2F8B               	goto	l735
+   428     07A9                     u110:
+   429     07A9                     l741:
+   430                           
+   431                           ;maxtry.c: 74:         _delay((unsigned long)((10000000)*(20000000/4000000.0)));
+   432     07A9  30FE               	movlw	254
+   433     07AA  00FA               	movwf	??_main+2
+   434     07AB  30A7               	movlw	167
+   435     07AC  00F9               	movwf	??_main+1
+   436     07AD  3065               	movlw	101
+   437     07AE  00F8               	movwf	??_main
+   438     07AF                     u137:
+   439     07AF  0BF8               	decfsz	??_main,f
+   440     07B0  2FAF               	goto	u137
+   441     07B1  0BF9               	decfsz	??_main+1,f
+   442     07B2  2FAF               	goto	u137
+   443     07B3  0BFA               	decfsz	??_main+2,f
+   444     07B4  2FAF               	goto	u137
+   445     07B5  2FB6               	nop2
+   446     07B6                     l743:
+   447                           
+   448                           ;maxtry.c: 76:         for (int j = 0; j < 4; j++) {
+   449     07B6  1283               	bcf	3,5	;RP0=0, select bank0
+   450     07B7  1303               	bcf	3,6	;RP1=0, select bank0
+   451     07B8  01AA               	clrf	main@j
+   452     07B9  01AB               	clrf	main@j+1
+   453     07BA                     l749:
+   454                           
+   455                           ;maxtry.c: 77:             send_command(0x20 + j, display_data2[j]);
+   456     07BA  1283               	bcf	3,5	;RP0=0, select bank0
+   457     07BB  1303               	bcf	3,6	;RP1=0, select bank0
+   458     07BC  082A               	movf	main@j,w
+   459     07BD  3E24               	addlw	(low (main@display_data2| 0))& (0+255)
+   460     07BE  0084               	movwf	4
+   461     07BF  1383               	bcf	3,7	;select IRP bank0
+   462     07C0  0800               	movf	0,w
+   463     07C1  00F0               	movwf	send_command@data
+   464     07C2  082A               	movf	main@j,w
+   465     07C3  3E20               	addlw	32
+   466     07C4  120A  118A  2705  120A  118A  	fcall	_send_command
+   467     07C9                     l751:
+   468                           
+   469                           ;maxtry.c: 78:         }
+   470     07C9  3001               	movlw	1
+   471     07CA  1283               	bcf	3,5	;RP0=0, select bank0
+   472     07CB  1303               	bcf	3,6	;RP1=0, select bank0
+   473     07CC  07AA               	addwf	main@j,f
+   474     07CD  1803               	skipnc
+   475     07CE  0AAB               	incf	main@j+1,f
+   476     07CF  3000               	movlw	0
+   477     07D0  07AB               	addwf	main@j+1,f
+   478     07D1                     l753:
+   479     07D1  082B               	movf	main@j+1,w
+   480     07D2  3A80               	xorlw	128
+   481     07D3  00FF               	movwf	btemp+1
+   482     07D4  3080               	movlw	128
+   483     07D5  027F               	subwf	btemp+1,w
+   484     07D6  1D03               	skipz
+   485     07D7  2FDA               	goto	u125
+   486     07D8  3004               	movlw	4
+   487     07D9  022A               	subwf	main@j,w
+   488     07DA                     u125:
+   489     07DA  1C03               	skipc
+   490     07DB  2FDD               	goto	u121
+   491     07DC  2FDE               	goto	u120
+   492     07DD                     u121:
+   493     07DD  2FBA               	goto	l749
+   494     07DE                     u120:
+   495     07DE                     l755:
+   496                           
+   497                           ;maxtry.c: 79:         _delay((unsigned long)((10000000)*(20000000/4000000.0)));
+   498     07DE  30FE               	movlw	254
+   499     07DF  00FA               	movwf	??_main+2
+   500     07E0  30A7               	movlw	167
+   501     07E1  00F9               	movwf	??_main+1
+   502     07E2  3065               	movlw	101
+   503     07E3  00F8               	movwf	??_main
+   504     07E4                     u147:
+   505     07E4  0BF8               	decfsz	??_main,f
+   506     07E5  2FE4               	goto	u147
+   507     07E6  0BF9               	decfsz	??_main+1,f
+   508     07E7  2FE4               	goto	u147
+   509     07E8  0BFA               	decfsz	??_main+2,f
+   510     07E9  2FE4               	goto	u147
+   511     07EA  2FEB               	nop2
+   512     07EB                     l37:
+   513     07EB  120A  118A  2800   	ljmp	start
+   514     07EE                     __end_of_main:
+   515                           
+   516                           	psect	text1
+   517     06C2                     __ptext1:	
+   518 ;; *************** function _initialize_ports *****************
+   519 ;; Defined at:
+   520 ;;		line 27 in file "maxtry.c"
+   521 ;; Parameters:    Size  Location     Type
+   522 ;;		None
+   523 ;; Auto vars:     Size  Location     Type
+   524 ;;		None
+   525 ;; Return value:  Size  Location     Type
+   526 ;;                  1    wreg      void 
+   527 ;; Registers used:
+   528 ;;		status,2
+   529 ;; Tracked objects:
+   530 ;;		On entry : 0/0
+   531 ;;		On exit  : 0/0
+   532 ;;		Unchanged: 0/0
+   533 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   534 ;;      Params:         0       0       0       0       0
+   535 ;;      Locals:         0       0       0       0       0
+   536 ;;      Temps:          0       0       0       0       0
+   537 ;;      Totals:         0       0       0       0       0
+   538 ;;Total ram usage:        0 bytes
+   539 ;; Hardware stack levels used: 1
+   540 ;; This function calls:
+   541 ;;		Nothing
+   542 ;; This function is called by:
+   543 ;;		_main
+   544 ;; This function uses a non-reentrant model
+   545 ;;
+   546                           
+   547     06C2                     _initialize_ports:	
+   548                           ;psect for function _initialize_ports
+   549                           
+   550     06C2                     l711:	
+   551                           ;incstack = 0
+   552                           ; Regs used in _initialize_ports: [status,2]
+   553                           
+   554                           
+   555                           ;maxtry.c: 28:     TRISB = 0x00;
+   556     06C2  1683               	bsf	3,5	;RP0=1, select bank1
+   557     06C3  1303               	bcf	3,6	;RP1=0, select bank1
+   558     06C4  0186               	clrf	6	;volatile
+   559                           
+   560                           ;maxtry.c: 29:     PORTB = 0x00;
+   561     06C5  1283               	bcf	3,5	;RP0=0, select bank0
+   562     06C6  1303               	bcf	3,6	;RP1=0, select bank0
+   563     06C7  0186               	clrf	6	;volatile
+   564     06C8                     l11:
+   565     06C8  0008               	return
+   566     06C9                     __end_of_initialize_ports:
+   567                           
+   568                           	psect	text2
+   569     06E4                     __ptext2:	
+   570 ;; *************** function _init_max6952 *****************
+   571 ;; Defined at:
+   572 ;;		line 50 in file "maxtry.c"
+   573 ;; Parameters:    Size  Location     Type
+   574 ;;		None
+   575 ;; Auto vars:     Size  Location     Type
+   576 ;;		None
+   577 ;; Return value:  Size  Location     Type
+   578 ;;                  1    wreg      void 
+   579 ;; Registers used:
+   580 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+   581 ;; Tracked objects:
+   582 ;;		On entry : 0/0
+   583 ;;		On exit  : 0/0
+   584 ;;		Unchanged: 0/0
+   585 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   586 ;;      Params:         0       0       0       0       0
+   587 ;;      Locals:         0       0       0       0       0
+   588 ;;      Temps:          0       0       0       0       0
+   589 ;;      Totals:         0       0       0       0       0
+   590 ;;Total ram usage:        0 bytes
+   591 ;; Hardware stack levels used: 1
+   592 ;; Hardware stack levels required when called: 1
+   593 ;; This function calls:
+   594 ;;		_send_command
+   595 ;; This function is called by:
+   596 ;;		_main
+   597 ;; This function uses a non-reentrant model
+   598 ;;
+   599                           
+   600     06E4                     _init_max6952:	
+   601                           ;psect for function _init_max6952
+   602                           
+   603     06E4                     l713:	
+   604                           ;incstack = 0
+   605                           ; Regs used in _init_max6952: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+   606                           
+   607                           
+   608                           ;maxtry.c: 51:     send_command(0x04, 0x01);
+   609     06E4  01F0               	clrf	send_command@data
+   610     06E5  0AF0               	incf	send_command@data,f
+   611     06E6  3004               	movlw	4
+   612     06E7  120A  118A  2705  120A  118A  	fcall	_send_command
+   613                           
+   614                           ;maxtry.c: 52:     send_command(0x03, 0x01);
+   615     06EC  01F0               	clrf	send_command@data
+   616     06ED  0AF0               	incf	send_command@data,f
+   617     06EE  3003               	movlw	3
+   618     06EF  120A  118A  2705  120A  118A  	fcall	_send_command
+   619                           
+   620                           ;maxtry.c: 53:     send_command(0x01, 0x0F);
+   621     06F4  300F               	movlw	15
+   622     06F5  00F0               	movwf	send_command@data
+   623     06F6  3001               	movlw	1
+   624     06F7  120A  118A  2705  120A  118A  	fcall	_send_command
+   625                           
+   626                           ;maxtry.c: 54:     send_command(0x02, 0xF0);
+   627     06FC  30F0               	movlw	240
+   628     06FD  00F0               	movwf	send_command@data
+   629     06FE  3002               	movlw	2
+   630     06FF  120A  118A  2705  120A  118A  	fcall	_send_command
+   631     0704                     l21:
+   632     0704  0008               	return
+   633     0705                     __end_of_init_max6952:
+   634                           
+   635                           	psect	text3
+   636     0705                     __ptext3:	
+   637 ;; *************** function _send_command *****************
+   638 ;; Defined at:
+   639 ;;		line 32 in file "maxtry.c"
+   640 ;; Parameters:    Size  Location     Type
+   641 ;;  address         1    wreg     unsigned char 
+   642 ;;  data            1    0[COMMON] unsigned char 
+   643 ;; Auto vars:     Size  Location     Type
+   644 ;;  address         1    3[COMMON] unsigned char 
+   645 ;;  i               2    6[COMMON] int 
+   646 ;;  i               2    4[COMMON] int 
+   647 ;; Return value:  Size  Location     Type
+   648 ;;                  1    wreg      void 
+   649 ;; Registers used:
+   650 ;;		wreg, status,2, status,0, btemp+1
+   651 ;; Tracked objects:
+   652 ;;		On entry : 0/0
+   653 ;;		On exit  : 0/0
+   654 ;;		Unchanged: 0/0
+   655 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   656 ;;      Params:         1       0       0       0       0
+   657 ;;      Locals:         5       0       0       0       0
+   658 ;;      Temps:          2       0       0       0       0
+   659 ;;      Totals:         8       0       0       0       0
+   660 ;;Total ram usage:        8 bytes
+   661 ;; Hardware stack levels used: 1
+   662 ;; This function calls:
+   663 ;;		Nothing
+   664 ;; This function is called by:
+   665 ;;		_init_max6952
+   666 ;;		_main
+   667 ;;		_test_max6952
+   668 ;; This function uses a non-reentrant model
+   669 ;;
+   670                           
+   671     0705                     _send_command:	
+   672                           ;psect for function _send_command
+   673                           
+   674                           
+   675                           ;incstack = 0
+   676                           ; Regs used in _send_command: [wreg+status,2+status,0+btemp+1]
+   677                           ;send_command@address stored from wreg
+   678     0705  00F3               	movwf	send_command@address
+   679     0706                     l669:
+   680                           
+   681                           ;maxtry.c: 33:     PORTBbits.RB1 = 0;
+   682     0706  1283               	bcf	3,5	;RP0=0, select bank0
+   683     0707  1303               	bcf	3,6	;RP1=0, select bank0
+   684     0708  1086               	bcf	6,1	;volatile
+   685     0709                     l671:
+   686                           
+   687                           ;maxtry.c: 34:     for (int i = 0; i < 8; i++) {
+   688     0709  01F4               	clrf	send_command@i
+   689     070A  01F5               	clrf	send_command@i+1
+   690     070B                     l677:
+   691                           
+   692                           ;maxtry.c: 35:         PORTBbits.RB0 = (address & 0x80) >> 7;
+   693     070B  0873               	movf	send_command@address,w
+   694     070C  00F1               	movwf	??_send_command
+   695     070D  3007               	movlw	7
+   696     070E                     u75:
+   697     070E  1003               	clrc
+   698     070F  0CF1               	rrf	??_send_command,f
+   699     0710  3EFF               	addlw	-1
+   700     0711  1D03               	skipz
+   701     0712  2F0E               	goto	u75
+   702     0713  3001               	movlw	1
+   703     0714  0571               	andwf	??_send_command,w
+   704     0715  00F2               	movwf	??_send_command+1
+   705     0716  1283               	bcf	3,5	;RP0=0, select bank0
+   706     0717  1303               	bcf	3,6	;RP1=0, select bank0
+   707     0718  0806               	movf	6,w	;volatile
+   708     0719  0672               	xorwf	??_send_command+1,w
+   709     071A  39FE               	andlw	-2
+   710     071B  0672               	xorwf	??_send_command+1,w
+   711     071C  0086               	movwf	6	;volatile
+   712     071D                     l679:
+   713                           
+   714                           ;maxtry.c: 36:         PORTBbits.RB2 = 0;
+   715     071D  1106               	bcf	6,2	;volatile
+   716     071E                     l681:
+   717                           
+   718                           ;maxtry.c: 37:         _delay((unsigned long)((1)*(20000000/4000000.0)));
+   719     071E  2F1F               	nop2	;2 cycle nop
+   720     071F  2F20               	nop2	;2 cycle nop
+   721     0720  0000               	nop
+   722     0721                     l683:
+   723                           
+   724                           ;maxtry.c: 38:         PORTBbits.RB2 = 1;
+   725     0721  1283               	bcf	3,5	;RP0=0, select bank0
+   726     0722  1303               	bcf	3,6	;RP1=0, select bank0
+   727     0723  1506               	bsf	6,2	;volatile
+   728     0724                     l685:
+   729                           
+   730                           ;maxtry.c: 39:         address <<= 1;
+   731     0724  1003               	clrc
+   732     0725  0DF3               	rlf	send_command@address,f
+   733     0726                     l687:
+   734                           
+   735                           ;maxtry.c: 40:     }
+   736     0726  3001               	movlw	1
+   737     0727  07F4               	addwf	send_command@i,f
+   738     0728  1803               	skipnc
+   739     0729  0AF5               	incf	send_command@i+1,f
+   740     072A  3000               	movlw	0
+   741     072B  07F5               	addwf	send_command@i+1,f
+   742     072C                     l689:
+   743     072C  0875               	movf	send_command@i+1,w
+   744     072D  3A80               	xorlw	128
+   745     072E  00FF               	movwf	btemp+1
+   746     072F  3080               	movlw	128
+   747     0730  027F               	subwf	btemp+1,w
+   748     0731  1D03               	skipz
+   749     0732  2F35               	goto	u85
+   750     0733  3008               	movlw	8
+   751     0734  0274               	subwf	send_command@i,w
+   752     0735                     u85:
+   753     0735  1C03               	skipc
+   754     0736  2F38               	goto	u81
+   755     0737  2F39               	goto	u80
+   756     0738                     u81:
+   757     0738  2F0B               	goto	l677
+   758     0739                     u80:
+   759     0739                     l691:
+   760                           
+   761                           ;maxtry.c: 41:     for (int i = 0; i < 8; i++) {
+   762     0739  01F6               	clrf	send_command@i_64
+   763     073A  01F7               	clrf	send_command@i_64+1
+   764     073B                     l697:
+   765                           
+   766                           ;maxtry.c: 42:         PORTBbits.RB0 = (data & 0x80) >> 7;
+   767     073B  0870               	movf	send_command@data,w
+   768     073C  00F1               	movwf	??_send_command
+   769     073D  3007               	movlw	7
+   770     073E                     u95:
+   771     073E  1003               	clrc
+   772     073F  0CF1               	rrf	??_send_command,f
+   773     0740  3EFF               	addlw	-1
+   774     0741  1D03               	skipz
+   775     0742  2F3E               	goto	u95
+   776     0743  3001               	movlw	1
+   777     0744  0571               	andwf	??_send_command,w
+   778     0745  00F2               	movwf	??_send_command+1
+   779     0746  1283               	bcf	3,5	;RP0=0, select bank0
+   780     0747  1303               	bcf	3,6	;RP1=0, select bank0
+   781     0748  0806               	movf	6,w	;volatile
+   782     0749  0672               	xorwf	??_send_command+1,w
+   783     074A  39FE               	andlw	-2
+   784     074B  0672               	xorwf	??_send_command+1,w
+   785     074C  0086               	movwf	6	;volatile
+   786     074D                     l699:
+   787                           
+   788                           ;maxtry.c: 43:         PORTBbits.RB2 = 0;
+   789     074D  1106               	bcf	6,2	;volatile
+   790     074E                     l701:
+   791                           
+   792                           ;maxtry.c: 44:         _delay((unsigned long)((1)*(20000000/4000000.0)));
+   793     074E  2F4F               	nop2	;2 cycle nop
+   794     074F  2F50               	nop2	;2 cycle nop
+   795     0750  0000               	nop
+   796     0751                     l703:
+   797                           
+   798                           ;maxtry.c: 45:         PORTBbits.RB2 = 1;
+   799     0751  1283               	bcf	3,5	;RP0=0, select bank0
+   800     0752  1303               	bcf	3,6	;RP1=0, select bank0
+   801     0753  1506               	bsf	6,2	;volatile
+   802     0754                     l705:
+   803                           
+   804                           ;maxtry.c: 46:         data <<= 1;
+   805     0754  1003               	clrc
+   806     0755  0DF0               	rlf	send_command@data,f
+   807     0756                     l707:
+   808                           
+   809                           ;maxtry.c: 47:     }
+   810     0756  3001               	movlw	1
+   811     0757  07F6               	addwf	send_command@i_64,f
+   812     0758  1803               	skipnc
+   813     0759  0AF7               	incf	send_command@i_64+1,f
+   814     075A  3000               	movlw	0
+   815     075B  07F7               	addwf	send_command@i_64+1,f
+   816     075C                     l709:
+   817     075C  0877               	movf	send_command@i_64+1,w
+   818     075D  3A80               	xorlw	128
+   819     075E  00FF               	movwf	btemp+1
+   820     075F  3080               	movlw	128
+   821     0760  027F               	subwf	btemp+1,w
+   822     0761  1D03               	skipz
+   823     0762  2F65               	goto	u105
+   824     0763  3008               	movlw	8
+   825     0764  0276               	subwf	send_command@i_64,w
+   826     0765                     u105:
+   827     0765  1C03               	skipc
+   828     0766  2F68               	goto	u101
+   829     0767  2F69               	goto	u100
+   830     0768                     u101:
+   831     0768  2F3B               	goto	l697
+   832     0769                     u100:
+   833     0769                     l17:
+   834                           
+   835                           ;maxtry.c: 48:     PORTBbits.RB1 = 1;
+   836     0769  1283               	bcf	3,5	;RP0=0, select bank0
+   837     076A  1303               	bcf	3,6	;RP1=0, select bank0
+   838     076B  1486               	bsf	6,1	;volatile
+   839     076C                     l18:
+   840     076C  0008               	return
+   841     076D                     __end_of_send_command:
+   842     007E                     btemp	set	126	;btemp
+   843     007E                     wtemp0	set	126
+   844                           
+   845                           	psect	config
+   846                           
+   847                           ;Config register CONFIG @ 0x2007
+   848                           ;	Oscillator Selection bits
+   849                           ;	FOSC = EXTRC, RC oscillator
+   850                           ;	Watchdog Timer Enable bit
+   851                           ;	WDTE = OFF, WDT disabled
+   852                           ;	Power-up Timer Enable bit
+   853                           ;	PWRTE = OFF, PWRT disabled
+   854                           ;	Brown-out Reset Enable bit
+   855                           ;	BOREN = OFF, BOR disabled
+   856                           ;	Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit
+   857                           ;	LVP = OFF, RB3 is digital I/O, HV on MCLR must be used for programming
+   858                           ;	Data EEPROM Memory Code Protection bit
+   859                           ;	CPD = OFF, Data EEPROM code protection off
+   860                           ;	Flash Program Memory Write Enable bits
+   861                           ;	WRT = OFF, Write protection off; all program memory may be written to by EECON control
+   862                           ;	In-Circuit Debugger Mode bit
+   863                           ;	DEBUG = 0x1, unprogrammed default
+   864                           ;	Flash Program Memory Code Protection bit
+   865                           ;	CP = OFF, Code protection off
+   866     2007                     	org	8199
+   867     2007  3F3B               	dw	16187
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        8
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14     11      11
+    BANK0            80     12      20
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    _main->_send_command
+    _init_max6952->_send_command
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                15    15      0    1720
+                                              8 COMMON     3     3      0
+                                              0 BANK0     12    12      0
+                       _init_max6952
+                   _initialize_ports
+                       _send_command
+ ---------------------------------------------------------------------------------
+ (1) _initialize_ports                                     0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _init_max6952                                         0     0      0     746
+                       _send_command
+ ---------------------------------------------------------------------------------
+ (1) _send_command                                         8     7      1     746
+                                              0 COMMON     8     7      1
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _init_max6952
+     _send_command
+   _initialize_ports
+   _send_command
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BANK3               60      0       0       9        0.0%
+BITBANK3            60      0       0       8        0.0%
+SFR3                 0      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+BANK2               60      0       0      11        0.0%
+BITBANK2            60      0       0      10        0.0%
+SFR2                 0      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK1            50      0       0       6        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR1              0      0       0       2        0.0%
+BANK0               50      C      14       5       25.0%
+BITBANK0            50      0       0       4        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+COMMON               E      B       B       1       78.6%
+BITCOMMON            E      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+DATA                 0      0      1F      12        0.0%
+ABS                  0      0      1F       3        0.0%
+NULL                 0      0       0       0        0.0%
+STACK                0      0       0       2        0.0%
+EEDATA             100      0       0       0        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.46 build 20240104201356 
+Symbol Table                                                                                   Thu Dec 12 01:35:26 2024
+
+                       pc 0002                        l11 06C8                        l21 0704  
+                      l17 0769                        l18 076C                        l37 07EB  
+                      u80 0739                        u81 0738                        u75 070E  
+                      u85 0735                        u95 073E                        fsr 0004  
+                     l701 074E                       l703 0751                       l711 06C2  
+                     l705 0754                       l713 06E4                       l721 076D  
+                     l707 0756                       l723 0772                       l709 075C  
+                     l741 07A9                       l725 0777                       l671 0709  
+                     l751 07C9                       l743 07B6                       l735 078B  
+                     l727 0781                       l681 071E                       l753 07D1  
+                     l737 0798                       l729 0789                       l691 0739  
+                     l683 0721                       l755 07DE                       l739 07A0  
+                     l685 0724                       l677 070B                       l669 0706  
+                     l749 07BA                       l687 0726                       l679 071D  
+                     l697 073B                       l689 072C                       l699 074D  
+                     u100 0769                       u101 0768                       u110 07A9  
+                     u111 07A8                       u120 07DE                       u105 0765  
+                     u121 07DD                       u125 07DA                       u137 07AF  
+                     u147 07E4                       fsr0 0004                       indf 0000  
+                    _main 076D                      btemp 007E                      start 0000  
+                   ?_main 0070                     _PORTB 0006                     _TRISB 0086  
+        send_command@i_64 0076          send_command@data 0070                     main@i 0028  
+                   main@j 002A                     pclath 000A                     status 0003  
+                   wtemp0 007E           __initialization 07EE              __end_of_main 07EE  
+                  ??_main 0078             ?_init_max6952 0070         ?_initialize_ports 0070  
+      ??_initialize_ports 0070            ??_init_max6952 0078   __end_of__initialization 07FC  
+          __pcstackCOMMON 0070              __pidataBANK0 06C9                __pmaintext 076D  
+           ?_send_command 0070            ??_send_command 0071      __end_of_init_max6952 0705  
+                 __ptext1 06C2                   __ptext2 06E4                   __ptext3 0705  
+    end_of_initialization 07FC                 _PORTBbits 0006             send_command@i 0074  
+     start_initialization 07EE      __end_of_send_command 076D                init_fetch0 06D1  
+             __pdataBANK0 002C                 ___latbits 0002             __pcstackBANK0 0020  
+            _init_max6952 06E4          _initialize_ports 06C2         main@display_data1 0020  
+       main@display_data2 0024                 main@F1021 0030                 main@F1023 002C  
+     send_command@address 0073              _send_command 0705                  init_ram0 06D5  
+__end_of_initialize_ports 06C9  
